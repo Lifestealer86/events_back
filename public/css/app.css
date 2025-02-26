@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+@keyframes color_rotate {
+    from {
+        filter: hue-rotate(0);
+    }
+    to {
+        filter: hue-rotate(360deg);
+    }
+}
+
+h1 {
+    background-color: #0b2e13;
+    color: #F2F2F2;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 56pt;
+    text-shadow: 0 0 35px red;
+    box-shadow: inset 0 0 150px red;
+}
+
+
+h1 span:first-child {
+    font-size: 102pt;
+    text-align: center;
+    text-shadow: 0 0 25px pink;
+}
+
+h1:hover {
+    animation: color_rotate 1s infinite;
+}
