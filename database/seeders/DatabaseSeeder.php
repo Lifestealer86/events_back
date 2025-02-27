@@ -13,8 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
          \App\Models\User::factory()->create([
              'first_name' => 'Иван',
              'last_name' => 'Иванов',
@@ -35,5 +33,7 @@ class DatabaseSeeder extends Seeder
          ]);
 
          \App\Models\Peoples::factory(5)->create();
+         \App\Models\EventPlace::factory(10)->create();
+         \App\Models\Event::factory(15)->create();
     }
 }

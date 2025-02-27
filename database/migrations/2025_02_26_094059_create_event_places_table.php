@@ -16,9 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('city');
             $table->string('street');
-            $table->string('street_number');
+            $table->string('house_number');
             $table->string('office')->nullable();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
