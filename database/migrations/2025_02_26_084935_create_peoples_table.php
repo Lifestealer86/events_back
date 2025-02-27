@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
+    /*
      * Run the migrations.
      */
     public function up(): void
@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('date');
             $table->enum('sex', ['мужской', 'женский']);
             $table->foreignId("user_id")->constrained("users")->onDelete("cascade");
+            $table->timestamps();
         });
     }
 

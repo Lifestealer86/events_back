@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('event_id')->constrained('events')->onDelete('cascade');
+            $table->integer('people_count')->default(0);
             $table->integer('raiting')->nullable();
         });
     }

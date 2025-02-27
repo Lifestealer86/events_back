@@ -8,7 +8,7 @@ use App\Models\User;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class PeopleFactory extends Factory
+class PeoplesFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,8 +19,8 @@ class PeopleFactory extends Factory
     {
         $user_id = User::all()->random()->id;
         return [
-            'first_name' => fake()->name(),
-            'last_name' => fake()->name(),
+            'first_name' => fake()->firstName(),
+            'last_name' => fake()->lastName(),
             'date' => fake()->date(),
             'sex' => fake()->randomElement(['мужской', 'женский']),
             'user_id' => $user_id

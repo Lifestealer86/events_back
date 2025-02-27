@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
          \App\Models\User::factory()->create([
-             'first_name' => 'User1',
-             'last_name' => 'User1',
+             'first_name' => 'Иван',
+             'last_name' => 'Иванов',
              'email' => 'user1@siberia.ru',
              'password' => Hash::make('user1P@ssword'),
              'birth_date' => '1990-01-01',
@@ -25,8 +25,8 @@ class DatabaseSeeder extends Seeder
              'photo' => 'img/default.webp',
          ]);
          \App\Models\User::factory()->create([
-             'first_name' => 'User2',
-             'last_name' => 'User2',
+             'first_name' => 'Ирина',
+             'last_name' => 'Сидорова',
              'email' => 'user2@siberia.ru',
              'password' => Hash::make('user2P@ssword'),
              'birth_date' => '1993-02-11',
@@ -34,6 +34,6 @@ class DatabaseSeeder extends Seeder
              'photo' => 'img/default.webp',
          ]);
 
-         // \App\Models\User::factory(5)->create();
+         \App\Models\Peoples::factory(5)->create();
     }
 }
