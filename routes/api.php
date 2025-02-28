@@ -18,20 +18,24 @@ use App\Http\Controllers\EventController;
 */
 
 Route::get('/api-travel/siberian-nature', [AboutController::class, 'about']);
-Route::post('/authorization', [UserController::class, 'authorization']);
 Route::post('/registration', [UserController::class, 'registration']);
+Route::post('/authorization', [UserController::class, 'authorization']);
 Route::get('/logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
 
 Route::prefix('/api-travel')->middleware('auth:sanctum')->group(function () {
     Route::get('/events', [EventController::class, 'show']);
-    Route::get('/events/{{%id}}', [EventController::class, 'show']);
+    Route::get('/events/{id}', [EventController::class, 'show']);
     Route::post('/events', [EventController::class, 'store']);
-    Route::patch('/events/{{%id}}', [EventController::class, 'patchEvent']);
-    Route::delete('/events/{{%id}}', [EventController::class, 'delete']);
-    Route::delete('/events/{{%id}}/response', [EventController::class, 'storeResponse']);
+    Route::patch('/events/{id}', [EventController::class, 'patchEvent']);
+    Route::delete('/events/{id}', [EventController::class, 'delete']);
+    Route::delete('/events/{id}/response', [EventController::class, 'storeResponse']);
     Route::post('/book-event', [EventController::class, 'storeBookEvent']);
     Route::get('/search', [EventController::class, 'search']);
-    Route::get('/users/{{%id}}', [UserController::class, 'show']);
-    Route::patch('/users/{{%id}}', [UserController::class, 'patchUser']);
-    Route::post('/users/{{%id}}', [UserController::class, 'addPeople']);
+    Route::get('/users/{id}', [UserController::class, 'show']);
+    Route::patch('/users/{id}', [UserController::class, 'patchUser']);
+    Route::post('/users/{id}', [UserController::class, 'addPeople']);
+});
+
+Route::fallback(function () {
+    return response()->json(["message" => "Not Found", "code" => 404], 404);
 });
