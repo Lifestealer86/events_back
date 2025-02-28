@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use http\Env\Response;
 use Illuminate\Http\Request;
 use App\Http\Requests\RegistrationRequest;
 use App\Models\User;
@@ -47,9 +46,9 @@ class UserController extends Controller
         throw new ApiValidateException(401, false, "Login failed", ["email and password" => "Login failed"]);
     }
 
-    public function logout(Request $request)
+    public function logout(Request $request): JsonResponse
     {
         $request->user()->currentAccessToken()->delete();
-        return response()->noContent();
+        return response()->json([], 204);
     }
 }

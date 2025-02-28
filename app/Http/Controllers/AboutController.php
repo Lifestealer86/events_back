@@ -12,6 +12,6 @@ class AboutController extends Controller
             "data" => ["title" => ["name" => "Сибирская природа"],
                 "text" => ["data" => "Озера глубиной в тысячи метров, горные хребты, вековая тайга и северное сияние"],
                 "img" => ["url" => "img/siberian.jpeg"]]
-        ])->header('Content-Type', 'application/json');
+        ]);
     }
 }

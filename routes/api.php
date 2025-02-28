@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventPlaceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +23,9 @@ Route::post('/authorization', [UserController::class, 'authorization']);
 Route::get('/logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
 
 Route::prefix('/api-travel')->middleware('auth:sanctum')->group(function () {
+    Route::get('/event-places', [EventPlaceController::class, 'show']);
+    Route::post('/event-places', [EventPlaceController::class, 'store']);
+    Route::delete('/event-places/{id}', [EventPlaceController::class, 'delete']);
     Route::get('/events', [EventController::class, 'show']);
     Route::get('/events/{id}', [EventController::class, 'show']);
     Route::post('/events', [EventController::class, 'store']);
