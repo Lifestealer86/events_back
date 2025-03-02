@@ -18,6 +18,4 @@ class EventPlace extends Model
         'office',
         'user_id'
     ];
-
-
 }

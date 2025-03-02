@@ -27,16 +27,16 @@ Route::prefix('/api-travel')->middleware('auth:sanctum')->group(function () {
     Route::post('/event-places', [EventPlaceController::class, 'store']);
     Route::delete('/event-places/{id}', [EventPlaceController::class, 'delete']);
     Route::get('/events', [EventController::class, 'show']);
-    Route::get('/events/{id}', [EventController::class, 'show']);
+    Route::get('/events/{id}', [EventController::class, 'showOne']);
     Route::post('/events', [EventController::class, 'store']);
     Route::patch('/events/{id}', [EventController::class, 'patchEvent']);
     Route::delete('/events/{id}', [EventController::class, 'delete']);
     Route::delete('/events/{id}/response', [EventController::class, 'storeResponse']);
     Route::post('/book-event', [EventController::class, 'storeBookEvent']);
     Route::get('/search', [EventController::class, 'search']);
-    Route::get('/users/{id}', [UserController::class, 'show']);
+    Route::get('/users/{id}', [UserController::class, 'showData']);
     Route::patch('/users/{id}', [UserController::class, 'patchUser']);
-    Route::post('/users/{id}', [UserController::class, 'addPeople']);
+    Route::post('/users/{id}', [UserController::class, 'addPeoples']);
 });
 
 Route::fallback(function () {
