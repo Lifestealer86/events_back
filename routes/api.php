@@ -31,9 +31,9 @@ Route::prefix('/api-travel')->middleware('auth:sanctum')->group(function () {
     Route::post('/events', [EventController::class, 'store']);
     Route::patch('/events/{id}', [EventController::class, 'patchEvent']);
     Route::delete('/events/{id}', [EventController::class, 'delete']);
-    Route::delete('/events/{id}/response', [EventController::class, 'storeResponse']);
+    Route::get('/search/{query}', [EventController::class, 'search'])->where('query', '.*'); // done
     Route::post('/book-event', [EventController::class, 'storeBookEvent']);
-    Route::get('/search', [EventController::class, 'search']);
+    Route::delete('/events/{id}/response', [EventController::class, 'storeResponse']);
     Route::get('/users/{id}', [UserController::class, 'showData']);
     Route::patch('/users/{id}', [UserController::class, 'patchUser']);
     Route::post('/users/{id}', [UserController::class, 'addPeoples']);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\ApiValidateException;
 use App\Http\Requests\EventPlaceRequest;
 use App\Models\EventPlace;
 use App\Http\Resources\EventPlaceResource;
@@ -30,7 +31,7 @@ class EventPlaceController extends Controller
             return response()->json(["data" => ["message" => "not found"]], 404);
         }
         else if (EventPlace::where(["user_id" => Auth::id(), "id" => $id])->count() == 0) {
-            return response()->json(["data" => ["message" => "you are not allowed to delete this place"]], 403);
+            throw new ApiValidateException(403, false, "Forbidden", ["Forbidden event place" => "you are not allowed to delete this event place"]);
         }
         else if(EventPlace::where(["user_id" => Auth::id(), "id" => $id])->delete()) return response()->json(["data" => [
             "message" => "deleted ".$id

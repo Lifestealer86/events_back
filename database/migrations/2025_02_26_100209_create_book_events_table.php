@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('event_id')->constrained('events')->onDelete('cascade');
             $table->integer('people_count')->default(0);
             $table->integer('raiting')->nullable();
-            $table->string('response')->nullable();
+            $table->text('text')->nullable();
         });
     }
 

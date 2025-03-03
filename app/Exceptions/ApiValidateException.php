@@ -11,7 +11,7 @@ class ApiValidateException extends HttpResponseException
         $data = [
             "error" => [
                 'code' => $code,
-                'message' => "Validation error",
+                'message' => $message,
                 'errors' => $errors
             ]
         ];
