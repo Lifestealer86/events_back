@@ -36,13 +36,13 @@ Route::middleware('auth:sanctum')->group(callback: function () {
     Route::get('/feedbacks/{event_id}', [FeedbacksController::class, 'showFeedbacks']);
     Route::post('/feedbacks/{event_id}', [FeedbacksController::class, 'storeFeedback']);
     Route::delete('/feedbacks/{event_id}', [FeedbacksController::class, 'deleteFeedback']); // done
-    Route::get('/book-event/{event_id}', [BookEventController::class, 'showBookEvent']);
-    Route::post('/book-event/{event_id}', [BookEventController::class, 'storeBookEvent']);
-    Route::delete('/book-event/{event_id}', [BookEventController::class, 'deleteBookEvent']);
     Route::get('/users/{id}', [UserController::class, 'showData']);
     Route::patch('/users', [UserController::class, 'patchUser']);
     Route::post('/users/peoples', [UserController::class, 'addPeoples']);
     Route::delete('/users/peoples/{id}', [UserController::class, 'deletePeoples']);
+    Route::get('/book-event/{event_id}', [BookEventController::class, 'showBookEvent']);
+    Route::post('/book-event/{event_id}', [BookEventController::class, 'storeBookEvent']);
+    Route::delete('/book-event/{event_id}', [BookEventController::class, 'deleteBookEvent']);
 });
 
 Route::fallback(function () {
