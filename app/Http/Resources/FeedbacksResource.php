@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -14,6 +15,17 @@ class FeedbacksResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'user' => $this->withRequestToUser($this->user_id),
+            'text' => $this->text,
+            'img_raiting' => $this->img_raiting,
+            'raiting' => $this->raiting
+        ];
+    }
+
+    public function withRequestToUser($user_id):array
+    {
+        return User::where(["id" => $user_id])->first(['first_name', 'last_name','photo'])->toArray();
     }
 }

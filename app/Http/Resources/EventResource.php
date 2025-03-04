@@ -23,8 +23,9 @@ class EventResource extends JsonResource
             'event_counter' => $this->event_counter,
             'description' => $this->description,
             'img' => $this->img,
-            'start_date' => date('d-m-Y H:i', strtotime($this->start_date)),
-            'end_date' => date('d-m-Y H:i', strtotime($this->end_date)),
+            'raiting' => $this->raiting,
+            'start_date' => date('d.m.Y H:i', strtotime($this->start_date)),
+            'end_date' => date('d.m.Y H:i', strtotime($this->end_date)),
             'event_place' => $this->withRequestToEventPlaceResource($this->event_place_id),
             'owner' => $this->user_id == $user->id
         ];

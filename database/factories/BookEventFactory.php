@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Event;
+use App\Models\Peoples;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,10 +21,11 @@ class BookEventFactory extends Factory
     {
         $user_id = User::all()->random()->id;
         $event_id = Event::all()->random()->id;
+        $peoples_count = Peoples::all()->where('user_id', $user_id)->count();
         return [
             "user_id" => $user_id,
             "event_id" => $event_id,
-            "people_count" => rand(1, 5),
+            "people_count" => $peoples_count,
         ];
     }
 }

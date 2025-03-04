@@ -5,7 +5,8 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventPlaceController;
-
+use App\Http\Controllers\FeedbacksController;
+use App\Http\Controllers\BookEventController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,7 +23,7 @@ Route::post('/registration', [UserController::class, 'registration']);
 Route::post('/authorization', [UserController::class, 'authorization']);
 Route::get('/logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:sanctum')->group(callback: function () {
     Route::get('/event-places', [EventPlaceController::class, 'show']);
     Route::post('/event-places', [EventPlaceController::class, 'store']);
     Route::delete('/event-places/{id}', [EventPlaceController::class, 'delete']);
@@ -32,10 +33,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::patch('/events/{id}', [EventController::class, 'patchEvent']);
     Route::delete('/events/{id}', [EventController::class, 'delete']);
     Route::get('/search/{query}', [EventController::class, 'search'])->where('query', '.*');
-    Route::post('/book-event', [EventController::class, 'storeBookEvent']);
-    Route::get('/feedbacks/{event_id}', [EventController::class, 'showFeedbacks']);
-    Route::post('/feedbacks/{event_id}', [EventController::class, 'storeFeedback']);
-    Route::delete('/feedbacks/{event_id}', [EventController::class, 'deleteFeedback']);
+    Route::get('/feedbacks/{event_id}', [FeedbacksController::class, 'showFeedbacks']);
+    Route::post('/feedbacks/{event_id}', [FeedbacksController::class, 'storeFeedback']);
+    Route::delete('/feedbacks/{event_id}', [FeedbacksController::class, 'deleteFeedback']); // done
+    Route::get('/book-event/{event_id}', [BookEventController::class, 'showBookEvent']);
+    Route::post('/book-event/{event_id}', [BookEventController::class, 'storeBookEvent']);
+    Route::delete('/book-event/{event_id}', [BookEventController::class, 'deleteBookEvent']);
     Route::get('/users/{id}', [UserController::class, 'showData']);
     Route::patch('/users', [UserController::class, 'patchUser']);
     Route::post('/users/peoples', [UserController::class, 'addPeoples']);

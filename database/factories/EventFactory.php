@@ -21,7 +21,7 @@ class EventFactory extends Factory
         $user_id = User::all()->random()->id;
         $event_place_id = EventPlace::all()->random()->id;
         return [
-            'name' => $this->randomTitle(),
+            'name' => htmlspecialchars($this->randomTitle()),
             'event_counter' => rand(30, 50),
             'description' => $this->randomDescription(),
             'img' => $this->randomImg(),

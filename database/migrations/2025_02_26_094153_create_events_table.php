@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('event_counter');
             $table->string('description');
             $table->string('img');
+            $table->integer('raiting')->default(0);
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->foreignId('event_place_id')->constrained('event_places')->onDelete('cascade');

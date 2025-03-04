@@ -9,6 +9,7 @@ use App\Http\Resources\EventResource;
 use App\Models\Event;
 use App\Models\EventPlace;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Session\Store;
 use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
@@ -31,7 +32,7 @@ class EventController extends Controller
     {
         $user = Auth::user();
         $res = $request->validated();
-        $res['photo'] = $request->validated('img')->store('storage/img', 'public');
+        $res['photo'] = $request->validated('img')->store('storage/img/events', 'public');
         $res['start_date'] = $this->checkTime($res['start_date']);
         $res['end_date'] = $this->checkTime($res['end_date']);
         $res['user_id'] = $user->id;
@@ -69,7 +70,7 @@ class EventController extends Controller
 
     public function search($query): JsonResponse
     {
-        $query = explode("=", strtolower(trim($query)));
+        $query = explode("=", trim($query));
         $events = Event::where('name', 'LIKE', "%$query[1]%")->get(['id', 'name', 'description', 'start_date', 'end_date', 'img']);
         $events_places = EventPlace::where('name', 'LIKE', "%$query[1]%")->get(['id', 'name', 'city', 'street']);
         return response()->json(["events" => [$events], "event_places" => [$events_places]]);
@@ -81,7 +82,7 @@ class EventController extends Controller
             throw New ApiValidateException(422, false, "Validation error",
                 ["time" => "Time must be after 09:00 hours and before 21:00 hours"]);
         } else {
-            return date("Y-m-d H:i", strtotime($date_field));
+            return date("Y.m.d H:i", strtotime($date_field));
         }
     }
 }

@@ -15,7 +15,7 @@ class UserController extends Controller
     public function registration(RegistrationRequest $request): array
     {
         $res = $request->validated();
-        $res['photo'] = $request->validated('photo')->store('storage/img', 'public');
+        $res['photo'] = $request->validated('photo')->store('storage/img/users', 'public');
         User::create($res);
         return [
             "data" => [
@@ -24,7 +24,7 @@ class UserController extends Controller
                     "email" => $request->input("email"),
                 ],
             "code" => 201,
-            "message" => "Пользователь создан"
+            "message" => "User created"
             ]
         ];
     }

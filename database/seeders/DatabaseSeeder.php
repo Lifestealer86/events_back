@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Feedbacks;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -31,7 +32,7 @@ class DatabaseSeeder extends Seeder
              'photo' => 'img/default.webp',
          ]);
 
-         \App\Models\Peoples::factory(5)->create();
+         \App\Models\Peoples::factory(7)->create();
          \App\Models\EventPlace::factory(10)->create();
          \App\Models\Event::factory(15)->create();
          \App\Models\Feedbacks::factory(10)->create();
