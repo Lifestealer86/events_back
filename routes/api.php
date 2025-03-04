@@ -17,12 +17,12 @@ use App\Http\Controllers\EventPlaceController;
 |
 */
 
-Route::get('/api-travel/siberian-nature', [AboutController::class, 'about']);
+Route::get('/about', [AboutController::class, 'about']);
 Route::post('/registration', [UserController::class, 'registration']);
 Route::post('/authorization', [UserController::class, 'authorization']);
 Route::get('/logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
 
-Route::prefix('/api-travel')->middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
     Route::get('/event-places', [EventPlaceController::class, 'show']);
     Route::post('/event-places', [EventPlaceController::class, 'store']);
     Route::delete('/event-places/{id}', [EventPlaceController::class, 'delete']);
@@ -31,12 +31,15 @@ Route::prefix('/api-travel')->middleware('auth:sanctum')->group(function () {
     Route::post('/events', [EventController::class, 'store']);
     Route::patch('/events/{id}', [EventController::class, 'patchEvent']);
     Route::delete('/events/{id}', [EventController::class, 'delete']);
-    Route::get('/search/{query}', [EventController::class, 'search'])->where('query', '.*'); // done
+    Route::get('/search/{query}', [EventController::class, 'search'])->where('query', '.*');
     Route::post('/book-event', [EventController::class, 'storeBookEvent']);
-    Route::delete('/events/{id}/response', [EventController::class, 'storeResponse']);
+    Route::get('/feedbacks/{event_id}', [EventController::class, 'showFeedbacks']);
+    Route::post('/feedbacks/{event_id}', [EventController::class, 'storeFeedback']);
+    Route::delete('/feedbacks/{event_id}', [EventController::class, 'deleteFeedback']);
     Route::get('/users/{id}', [UserController::class, 'showData']);
-    Route::patch('/users/{id}', [UserController::class, 'patchUser']);
-    Route::post('/users/{id}', [UserController::class, 'addPeoples']);
+    Route::patch('/users', [UserController::class, 'patchUser']);
+    Route::post('/users/peoples', [UserController::class, 'addPeoples']);
+    Route::delete('/users/peoples/{id}', [UserController::class, 'deletePeoples']);
 });
 
 Route::fallback(function () {

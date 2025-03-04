@@ -70,8 +70,8 @@ class EventController extends Controller
     public function search($query): JsonResponse
     {
         $query = explode("=", strtolower(trim($query)));
-        $events = Event::where('name', 'LIKE', "%$query[1]%")->get();
-        $events_places = EventPlace::where('name', 'LIKE', "%$query[1]%")->get();
+        $events = Event::where('name', 'LIKE', "%$query[1]%")->get(['id', 'name', 'description', 'start_date', 'end_date', 'img']);
+        $events_places = EventPlace::where('name', 'LIKE', "%$query[1]%")->get(['id', 'name', 'city', 'street']);
         return response()->json(["events" => [$events], "event_places" => [$events_places]]);
     }
     public function checkTime($date_field): string

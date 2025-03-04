@@ -21,9 +21,9 @@ class EventFactory extends Factory
         $user_id = User::all()->random()->id;
         $event_place_id = EventPlace::all()->random()->id;
         return [
-            'name' => $this->faker->words(rand(3, 5), true),
-            'event_counter' => rand(10, 50),
-            'description' => $this->faker->text(),
+            'name' => $this->randomTitle(),
+            'event_counter' => rand(30, 50),
+            'description' => $this->randomDescription(),
             'img' => $this->randomImg(),
             'start_date' => $this->faker->dateTime(),
             'end_date' => $this->faker->dateTime(),
@@ -38,5 +38,25 @@ class EventFactory extends Factory
             'pic4.webp',
             'pic5.jpg'];
         return 'img/'.$imgArray[array_rand($imgArray)];
+    }
+    private function randomTitle(): string {
+        $imgArray = ['Конкурс "Сибирская природа"',
+            'Фестиваль "Сибирские традиции"',
+            'Конкурс "Сибирская лесозаготовка"',
+            'Конкурс "Лучший гид по Сибири"',
+            'Турнир "Сибирская рыбалка"',
+            'Конкурс "Сибирская кухня"',
+            'Конкурс "Покоряя высоту"'];
+        return $imgArray[array_rand($imgArray)];
+    }
+    private function randomDescription(): string {
+        $imgArray = ['Конкурс на лучшее фото сибирских пейзажей. Участники могут представить свои работы, запечатлевшие красоту природы Сибири.',
+            'Фестиваль, посвященный культуре и традициям коренных народов Сибири. Участники могут продемонстрировать свои навыки в народных ремеслах и танцах.',
+            'Конкурс для гидов, где они могут продемонстрировать свои знания о Сибири и навыки ведения экскурсий.',
+            'Конкурс кулинаров, где участники представляют свои блюда, вдохновленные сибирскими традициями.',
+            'Зимний фестиваль с различными активностями, включая катание на санях, лыжные гонки и конкурсы на лучшее снежное сооружение.',
+            'Посмотрите как пилят деревья',
+            'Узнайте совершенно обычные слова в сибирском колорите.'];
+        return $imgArray[array_rand($imgArray)];
     }
 }

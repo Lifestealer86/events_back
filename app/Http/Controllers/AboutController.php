@@ -10,7 +10,7 @@ class AboutController extends Controller
     {
         return response()->json([
             "data" => ["title" => ["name" => "Сибирская природа"],
-                "text" => ["data" => "Озера глубиной в тысячи метров, горные хребты, вековая тайга и северное сияние"],
+                "text" => ["data" => "Удивительное слияние всех сибирских активностей в одном месте!"],
                 "img" => ["url" => "img/siberian.jpeg"]]
         ]);
     }

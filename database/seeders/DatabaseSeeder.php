@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -35,5 +34,7 @@ class DatabaseSeeder extends Seeder
          \App\Models\Peoples::factory(5)->create();
          \App\Models\EventPlace::factory(10)->create();
          \App\Models\Event::factory(15)->create();
+         \App\Models\Feedbacks::factory(10)->create();
+         \App\Models\BookEvent::factory(10)->create();
     }
 }
