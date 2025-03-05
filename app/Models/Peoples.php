@@ -13,6 +13,7 @@ class Peoples extends Model
         'first_name',
         'last_name',
         'date',
-        'sex'
+        'sex',
+        'user_id'
     ];
 }

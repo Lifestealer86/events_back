@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('event_counter');
+            $table->integer('current_people')->default(0);
             $table->string('description');
             $table->string('img');
             $table->integer('raiting')->default(0);

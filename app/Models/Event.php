@@ -13,6 +13,7 @@ class Event extends Model
         'name',
         'city',
         'event_counter',
+        'current_people',
         'description',
         'img',
         'start_date',

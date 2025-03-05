@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\BookEvent;
 use App\Models\EventPlace;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -21,6 +22,7 @@ class EventResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'event_counter' => $this->event_counter,
+            'current_people' => (int)BookEvent::where(["event_id" => $this->id])->sum('people_count'),
             'description' => $this->description,
             'img' => $this->img,
             'raiting' => $this->raiting,

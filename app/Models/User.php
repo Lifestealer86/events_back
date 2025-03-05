@@ -53,4 +53,8 @@ class User extends Authenticatable
             $model->birth_date = date("Y-m-d",strtotime($model->birth_date));
         });
     }
+    public function people()
+    {
+        return $this->hasMany(Peoples::class);
+    }
 }
