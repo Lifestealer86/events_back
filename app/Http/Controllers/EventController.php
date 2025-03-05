@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\ApiValidateException;
-use App\Http\Requests\ApiRequest;
 use App\Http\Requests\EventRequest;
 use App\Http\Resources\EventResource;
 use App\Models\Event;
 use App\Models\EventPlace;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Session\Store;
 use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller

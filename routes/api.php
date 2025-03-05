@@ -35,9 +35,9 @@ Route::middleware('auth:sanctum')->group(callback: function () {
     Route::get('/search/{query}', [EventController::class, 'search'])->where('query', '.*');
     Route::get('/feedbacks/{event_id}', [FeedbacksController::class, 'showFeedbacks']);
     Route::post('/feedbacks/{event_id}', [FeedbacksController::class, 'storeFeedback']);
-    Route::delete('/feedbacks/{event_id}', [FeedbacksController::class, 'deleteFeedback']); // done
+    Route::delete('/feedbacks/{event_id}', [FeedbacksController::class, 'deleteFeedback']);
     Route::get('/users/{id}', [UserController::class, 'showData']);
-    Route::patch('/users', [UserController::class, 'patchUser']);
+    Route::patch('/users/{id}', [UserController::class, 'patchUser']); // done
     Route::post('/users/peoples', [UserController::class, 'addPeoples']);
     Route::delete('/users/peoples/{id}', [UserController::class, 'deletePeoples']);
     Route::get('/book-event/{event_id}', [BookEventController::class, 'showBookEvent']);

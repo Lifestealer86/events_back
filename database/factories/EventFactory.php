@@ -22,7 +22,7 @@ class EventFactory extends Factory
         $event_place_id = EventPlace::all()->random()->id;
         return [
             'name' => htmlspecialchars($this->randomTitle()),
-            'event_counter' => rand(30, 50),
+            'event_counter' => rand(10, 20),
             'description' => $this->randomDescription(),
             'img' => $this->randomImg(),
             'start_date' => $this->faker->dateTime(),

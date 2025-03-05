@@ -26,12 +26,12 @@ class EventResource extends JsonResource
             'raiting' => $this->raiting,
             'start_date' => date('d.m.Y H:i', strtotime($this->start_date)),
             'end_date' => date('d.m.Y H:i', strtotime($this->end_date)),
-            'event_place' => $this->withRequestToEventPlaceResource($this->event_place_id),
+            'event_place' => $this->useEventPlace($this->event_place_id),
             'owner' => $this->user_id == $user->id
         ];
     }
 
-    public function withRequestToEventPlaceResource($event_place_id):array
+    public function useEventPlace($event_place_id):array
     {
         $result = EventPlace::where(["id" => $event_place_id])->first();
         $result['office'] = ($result['office'] == 0 || $result['office'] == "") ? '' : ', строение ' . $result['office'];

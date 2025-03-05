@@ -14,6 +14,12 @@ class PeoplesResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            "id" => $this->id,
+            "first_name" => $this->first_name,
+            "last_name" => $this->last_name,
+            "date" => date('d-m-Y', strtotime($this->date)),
+            "sex" => $this->sex
+        ];
     }
 }
